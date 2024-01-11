@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 50px;">
+        <form method="POST" action="{{ url_for('login') }}" style="width: 300px; margin: 0 auto;">
+            <meta name="google-signin-client_id" content="432409932929-p3b7qguktrtjudt0dknmcpfqu835me3g.apps.googleusercontent.com">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <div style="margin-bottom: 10px;">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div style="margin-bottom: 10px;">
+                <label for="password">Şifre:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Giriş</button>
+        </form>
+
+        <p style="margin-top: 20px;">Hesabınız yok mu? <a href="{{ url_for('register') }}" class="btn btn-link">Üye Ol</a></p>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-bj51iiNlVUk7rYah5IjyOvJZ7Jgt6kfohmSUxLlS+oD8i/JA3I6jMq5UnN6gB1f" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>
