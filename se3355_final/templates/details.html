@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='details.css') }}">
+    <title>Details</title>
+</head>
+<body>
+    <div class="container mt-4">
+        
+        <div class="row">
+            
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="text-center">
+                               
+                            </div>
+                            <h3 class="card-title">{{ hotel.description }}</h3>
+                            <p class="card-text">Puan: {{ hotel.rating }}</p>
+                            <p class="card-text">Şehir: {{ hotel.location }}</p>
+                            <p class="card-text">Fiyat: {{ hotel.price }} TL</p>
+                            <h5 class="card-subtitle mb-2 text-muted">Amenities:</h5>
+                            <ul class="list-unstyled">
+                                <li>Free Wi-Fi</li>
+                                <li>Havuz</li>
+                                <li>Fitness Center</li>
+                                <li>Otopark</li>
+                                <li>Bar</li>
+                            </ul>
+                            <h5 class="card-subtitle mb-2 text-muted">Location:</h5>
+
+                        {% if hotel.location|lower == "istanbul" %}
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12036.841862253425!2d28.970172962267362!3d41.0425263415282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7d7bd1047c7%3A0xbe71708e1d84d64c!2sNex%20Hotels%20Istanbul!5e0!3m2!1str!2str!4v1704808502674!5m2!1str!2str" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        {% endif %}    
+                        {% if hotel.location|lower == "bodrum" %}
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3186.2472143848076!2d27.45930017569737!3d37.00389827218983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14be6b7be1e659c9%3A0x1bc22ebad3fa2859!2sCasa%20Nonna%20Bodrum!5e0!3m2!1str!2str!4v1704811375288!5m2!1str!2str" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                            {% else %}
+                        {% endif %}
+                        {% if hotel.location|lower == "fethiye" %}
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3200.3915099744963!2d29.10445147568117!3d36.665086672285945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c04309c5a3859b%3A0x81e3a41f3b3616a!2sSundia%20Exclusive%20by%20Liberty%20Fethiye!5e0!3m2!1str!2str!4v1704811433628!5m2!1str!2str" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                        {% endif %}          
+                        </div>
+                </div>
+            
+        </div>
+    </div>
+</body>
+</html>

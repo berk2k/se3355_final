@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otel Rezervasyon</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-2">
+        <div class="text-right">
+            {% if user %}
+                <p>{{ user.first_name }}</p>
+                <a href="{{ url_for('logout') }}">Çıkış Yap</a>
+            {% else %}    
+                <a href="{{ url_for('login') }}">Giriş Yap</a>
+            {% endif %}    
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <form class="d-flex flex-column flex-md-row mx-auto" style="max-width: 600px;" action="{{ url_for('search') }}" method="GET">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="arrival">Varış Noktası</label>
+                            <input type="text" class="form-control" id="arrival" name="arrival" placeholder="Varış Noktası" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="date">Tarih Seçimi</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="guests">Kişi Sayısı</label>
+                            <input type="number" class="form-control" id="guests" name="guests" placeholder="Kişi Sayısı" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ara</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    
+
+    <div class="container mt-4">
+        <h2 class="text-center">Hotels</h2>
+        <p class="text-center">Available for the weekend of {{ weekend_date.strftime('%Y-%m-%d') }}</p>
+        <div class="row">
+            {% for hotel in available_hotels %}
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="text-center">
+                            <a href="{{ url_for('details', id=hotel.id) }}">
+                                <img src="{{ url_for('static', filename='images/' + hotel.image_url) }}" class="card-img-top" alt="Hotel Image">
+                            </a>
+                            </div>
+                            <h5 class="card-title">{{ hotel.description }}</h5>
+                            <p class="card-text">Puan: {{ hotel.rating }}</p>
+                            <p class="card-text">Şehir: {{ hotel.location }}</p>
+                            <p class="card-text">Fiyat: {{ hotel.price }} TL</p>
+                            {% if hotel.member == 1 %}
+                            {% if user %}
+                                <p class="card-text">Üye Fiyatından Yararlanabilir</p>
+                                
+                                {% set discounted_price = hotel.price * 0.9 %}
+                                <p class="card-text">Üye İndirimli Fiyat: {{ discounted_price }} TL</p>
+                            {% else %}
+                                <p class="card-text">Üye Fiyatından Yararlanabilir</p>
+                                <a href="{{ url_for('login') }}" class="btn btn-primary">Üye fiyatı için giriş yapın</a>
+                            {% endif %}
+                        {% endif %}
+                            
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
