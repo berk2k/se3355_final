@@ -1,6 +1,6 @@
 # Design
 **Purpose and Scope of the project:** <br/>
-Purpose of the project is creating an online hotel booking website.
+Purpose of the project is creating an online hotel booking website.<br/>
   **The project offers several functionalities:**<br/>
       1- Search hotel by location and date.<br/>
       2- Special offers for members.<br/>
