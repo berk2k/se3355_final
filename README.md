@@ -20,3 +20,5 @@ Purpose of the project is creating an online hotel booking website.<br/>
   # Data Model
 
     ![image](https://github.com/berk2k/se3355_final/blob/master/dm/dm.JPG)<br/>    
+  # Video
+  https://se3355.blob.core.windows.net/se3355-final/se3355_final_video.mkv
